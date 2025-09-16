@@ -6,8 +6,10 @@ import Upload from './views/upload/Upload';
 import ProtectedRoute from './components/ProtectedRoute';
 import Layout from './views/Layout';
 import Home from './views/home/Home';
-// TODO: import UserProvider from mediastore mfe
-// TODO: import MediaProvider from mediastore mfe
+// import UserProvider from mediastore mfe
+// import MediaProvider from mediastore mfe
+import { UserProvider } from 'mediastore/UserContext';
+import { MediaProvider } from 'mediastore/MediaContext';
 
 function App() {
   return (
