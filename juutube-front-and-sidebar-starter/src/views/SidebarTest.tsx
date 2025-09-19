@@ -1,4 +1,4 @@
-// This is for testing purposes only
+
 import SidebarThumbnail from '@/components/sidebar/SidebarThumbnail';
 import mediaItems from '@/assets/test.json';
 import { MediaItem } from '@sharedTypes/DBTypes';
@@ -11,9 +11,10 @@ const SidebarTest = () => {
       <h3 className="mb-4 text-lg font-semibold">Playlist</h3>
       <div className="grid gap-4">
         {testMediaItems &&
-          testMediaItems.map((mediaItem) => (
+          testMediaItems.map((mediaItem) => 
             <SidebarThumbnail key={mediaItem._id} mediaItem={mediaItem} />
-          ))}
+
+          )}  
       </div>
     </aside>
   );

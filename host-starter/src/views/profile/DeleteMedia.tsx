@@ -11,7 +11,8 @@ import {
 } from '@/components/ui/dialog';
 import { MediaItem } from '@sharedTypes/DBTypes';
 import { LuTrash } from 'react-icons/lu';
-// TODO: import useMedia from mediastore mfe
+// : import useMedia from mediastore mfe
+import { useMedia } from 'mediastore/apiHooks';
 
 const DeleteMedia = (props: {
   mediaItem: MediaItem;

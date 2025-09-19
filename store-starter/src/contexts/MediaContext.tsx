@@ -1,22 +1,22 @@
 // TODO: get mediacontext from the example
-import { useFile, useMedia } from '@/hooks/apiHooks';
-import { useUserContext } from '@/hooks/contextHooks';
-import { MediaContextType, MediaItem } from '@sharedTypes/DBTypes';
-import { UploadResponse } from '@sharedTypes/MessageTypes';
-import { createContext, useEffect, useState } from 'react';
+import { useFile, useMedia } from "@/hooks/apiHooks";
+import { MediaContextType, MediaItem } from "@sharedTypes/DBTypes";
+import { UploadResponse } from "@sharedTypes/MessageTypes";
+import { createContext, useContext, useEffect, useState } from "react";
+import { UserContext } from "./UserContext";
 
 const MediaContext = createContext<MediaContextType | null>(null);
 
 const MediaProvider = ({ children }: { children: React.ReactNode }) => {
   const [mediaItems, setMediaItems] = useState<MediaItem[] | null>(null);
   const [singleMediaItem, setSingleMediaItem] = useState<MediaItem | null>(
-    null,
+    null
   );
   const [singleMediaItemId, setSingleMediaItemId] = useState<string | null>(
-    null,
+    null
   );
   const [userMediaItems, setUserMediaItems] = useState<MediaItem[] | null>(
-    null,
+    null
   );
   const [refreshMediaItems, setRefreshMediaItems] = useState<boolean>(false);
   const [refreshSingleMediaItem, setRefreshSingleMediaItem] =
@@ -34,12 +34,13 @@ const MediaProvider = ({ children }: { children: React.ReactNode }) => {
   } = useMedia(
     refreshMediaItems,
     refreshSingleMediaItem,
-    refreshUserMediaItems,
+    refreshUserMediaItems
   );
 
   const { postFile } = useFile();
 
-  const { user } = useUserContext();
+  const userCtx = useContext(UserContext);
+  const user = userCtx?.user ?? null;
 
   // get all media items ****************************************************
   useEffect(() => {
@@ -72,7 +73,7 @@ const MediaProvider = ({ children }: { children: React.ReactNode }) => {
           return;
         }
 
-        console.log('updateSingleMediaItem', media);
+        console.log("updateSingleMediaItem", media);
         setSingleMediaItem(media);
       } catch (error) {
         console.log((error as Error).message);
@@ -109,18 +110,18 @@ const MediaProvider = ({ children }: { children: React.ReactNode }) => {
   // update media item ************************************************
   const updateMediaItem = async (
     mediaItem: MediaItem,
-    inputs: Pick<MediaItem, 'title' | 'description'> & {
+    inputs: Pick<MediaItem, "title" | "description"> & {
       tags: string;
-    },
+    }
   ): Promise<void> => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     if (!token) {
-      throw new Error('Token not found');
+      throw new Error("Token not found");
     }
     const mediaInput = {
       title: inputs.title,
       description: inputs.description,
-      tags: inputs.tags.split(',').map((tag) => tag.trim()),
+      tags: inputs.tags.split(",").map((tag) => tag.trim()),
     };
     await putMedia(mediaItem._id, mediaInput, token);
     setRefreshMediaItems(!refreshMediaItems);
@@ -138,23 +139,23 @@ const MediaProvider = ({ children }: { children: React.ReactNode }) => {
       tag: string;
       stream_url: string;
     },
-    mediaType: 'video' | 'live_stream',
+    mediaType: "video" | "live_stream"
   ): Promise<void> => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     if (!token || (!file && !inputs.stream_url)) {
       return;
     }
 
     // if mediaType is video, post the file else post the stream_url
     let fileResult: UploadResponse = {
-      message: '',
+      message: "",
       data: {
         filename: inputs.stream_url,
-        media_type: 'application/dash+xml',
+        media_type: "application/dash+xml",
         filesize: 0,
       },
     };
-    if (mediaType === 'video' && file) {
+    if (mediaType === "video" && file) {
       fileResult = await postFile(file, token);
     }
 
@@ -170,7 +171,7 @@ const MediaProvider = ({ children }: { children: React.ReactNode }) => {
       title: inputs.title,
       description: inputs.description,
       type: mediaType,
-      tags: inputs.tag.split(',').map((tag) => tag.trim()),
+      tags: inputs.tag.split(",").map((tag) => tag.trim()),
       screenshots: fileResult.data.screenshots || [],
     };
 
@@ -184,9 +185,9 @@ const MediaProvider = ({ children }: { children: React.ReactNode }) => {
 
   // delete media item ************************************************
   const deleteMediaItem = async (id: string) => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     if (!token) {
-      throw new Error('Token not found');
+      throw new Error("Token not found");
     }
     await deleteMedia(id, token);
     setRefreshMediaItems(!refreshMediaItems);

@@ -1,5 +1,6 @@
-// TODO: import useUserContext from mediastore mfe
+// : import useUserContext from mediastore mfe
 import { Navigate, useLocation } from 'react-router-dom';
+import { useUserContext } from 'mediastore/contextHooks';
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const { user } = useUserContext();

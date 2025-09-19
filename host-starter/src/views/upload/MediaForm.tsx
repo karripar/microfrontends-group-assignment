@@ -6,7 +6,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from '@/hooks/formHooks';
 import { UploadResponse } from '@sharedTypes/MessageTypes';
-// TODO: import useFile and useMedia from mediastore mfe
+// : import useFile and useMedia from mediastore mfe
+import { useFile, useMedia } from 'mediastore/apiHooks';
 
 const MediaForm = () => {
   const [mediaType, setMediaType] = useState<'video' | 'live_stream'>('video');
@@ -54,7 +55,7 @@ const MediaForm = () => {
 
       const mediaResult = await postMedia(fileResult, mediaInputs, token);
       alert(mediaResult.message);
-      // TODO: redirect to Profile
+      // : redirect to Profile
       navigate('/profile');
     } catch (e) {
       console.log((e as Error).message);
