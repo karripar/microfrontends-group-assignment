@@ -1,0 +1,1 @@
+{"root":["./src/main.tsx","./src/vite-env.d.ts","./src/components/player/videobuttons.tsx","./src/components/player/videoplayer.tsx","./src/components/ui/button.tsx","./src/lib/fetchdata.ts","./src/lib/utils.ts"],"version":"5.9.2"}
