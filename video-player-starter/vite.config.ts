@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [
     react(),
     federation({
-      name: 'front_and_sidebar',
+      name: 'video_player',
       filename: 'remoteEntry.js',
       exposes: {
         './VideoPlayer': './src/components/player/VideoPlayer.tsx',
