@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom';
 //: Import useMediaContext from mediastore mfe
 import { useMediaContext } from 'mediastore/contextHooks';
 import Sidebar from 'front_and_sidebar/Sidebar';
+import { Suspense } from 'react';
 
 const Single = () => {
   const { id } = useParams();
@@ -21,6 +22,7 @@ const Single = () => {
 
   return (
     <>
+      <Suspense fallback={<div>Loading...</div>}>
       <div className="flex min-h-screen w-full">
         <main className="w-full max-w-4xl mx-auto py-12 md:py-16 lg:py-20 pl-4 pr-4">
           {singleMediaItem === null ? (
@@ -37,6 +39,7 @@ const Single = () => {
         }
         <Sidebar mediaItems={mediaItems} />
       </div>
+      </Suspense>
     </>
   );
 };
