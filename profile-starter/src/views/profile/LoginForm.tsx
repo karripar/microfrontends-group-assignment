@@ -2,7 +2,8 @@ import { Button } from '@/components/ui/button';
 import { CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
-import { useForm } from '@/hooks/formHooks';
+// Update the import path to the correct relative location of formHooks
+import { useForm } from '../../hooks/formHooks';
 import { Credentials } from '@sharedTypes/DBTypes';
 // : import useUserContext from mediastore mfe
 import { useUserContext } from 'mediastore/contextHooks';

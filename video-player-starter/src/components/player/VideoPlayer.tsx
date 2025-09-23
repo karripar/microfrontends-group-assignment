@@ -1,20 +1,16 @@
-import { MediaItem } from '@sharedTypes/DBTypes';
-import VideoButtons from './VideoButtons';
-import { useEffect, useRef } from 'react';
-import ReactPlayer from 'react-player';
-import { decode } from 'html-entities';
+import { MediaItem } from "@sharedTypes/DBTypes";
+import VideoButtons from "./VideoButtons";
+import { useEffect, useRef } from "react";
+import ReactPlayer from "react-player/lazy";
+import { decode } from "html-entities";
 
 const VideoPlayer = (props: { mediaItem: MediaItem }) => {
   const { mediaItem } = props;
-  const videoRef = useRef<ReactPlayer>(null);
+  const videoRef = useRef<ReactPlayer | null>(null);
 
-  // Reload the video when the mediaItem changes (different behavior than with <img>)
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.seekTo(0);
-    }
+    videoRef.current?.seekTo(0);
   }, [mediaItem.url]);
-
   console.log(decode(mediaItem.url));
   return (
     <>
@@ -26,12 +22,12 @@ const VideoPlayer = (props: { mediaItem: MediaItem }) => {
           playing
           ref={videoRef}
           url={
-            mediaItem.type === 'video'
+            mediaItem.type === "video"
               ? import.meta.env.VITE_FILE_SERVER + mediaItem.url
               : import.meta.env.VITE_STREAM_SERVER + mediaItem.url
           }
           onError={(e) => console.error(e)}
-          config={{ file: { attributes: { crossOrigin: 'anonymous' } } }}
+          config={{ file: { attributes: { crossOrigin: "anonymous" } } }}
         />
       </div>
 
@@ -42,7 +38,7 @@ const VideoPlayer = (props: { mediaItem: MediaItem }) => {
             <div className="flex items-center space-x-2 text-muted-foreground">
               <h4 className="font-bold">{mediaItem.owner.username}</h4>
               <div className="h-1 w-1 rounded-full bg-muted-foreground" />
-              <div>{new Date(mediaItem.uploadedAt).toLocaleString('fi')}</div>
+              <div>{new Date(mediaItem.uploadedAt).toLocaleString("fi")}</div>
             </div>
             <div className="flex items-center space-x-4">
               <VideoButtons mediaItem={mediaItem} />

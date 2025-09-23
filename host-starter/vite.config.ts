@@ -10,10 +10,12 @@ export default defineConfig({
     federation({
       name: "host",
       remotes: {
-        mediastore: "http://localhost:3001/assets/remoteEntry.js",
-        front_and_sidebar: "http://localhost:3002/assets/remoteEntry.js",
-        profile: "http://localhost:3003/assets/remoteEntry.js",
+        mediastore: 'http://localhost:3001/assets/remoteEntry.js',
+        front_and_sidebar: 'http://localhost:3002/assets/remoteEntry.js',
+        video_player: 'http://localhost:3004/assets/remoteEntry.js',
+        profile: 'http://localhost:3005/assets/remoteEntry.js',
       },
+      
       shared: ["react", "react-dom", "react-router-dom"],
     }),
 

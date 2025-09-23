@@ -16,12 +16,12 @@ export default defineConfig({
         './MediaContext': './src/contexts/MediaContext.tsx',
         './UserContext': './src/contexts/UserContext.tsx',
       },
-      shared: ['react', 'react-dom', 'react-router-dom'],
+      shared: {
+        react: { requiredVersion: "^18.3.1" },
+        "react-dom": { requiredVersion: "^18.3.1" },
+        "react-router-dom": { requiredVersion: "^6.26.0" }
+      },
     })
-    // TODO: Add the federation configuration
-    // name: mediastore
-    // exposes: contextHooks, MediaContext, UserContext, apiHooks
-    // shared: react, react-dom, react-router-dom
   ],
   server: {
     port: 3001, // Set the desired port here
