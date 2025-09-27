@@ -1,0 +1,24 @@
+# Global ignores for the monorepo
+
+# Node
+**/node_modules/
+**/dist/
+**/.vite/
+**/coverage/
+**/*.tsbuildinfo
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Env files (keep samples/examples)
+**/.env
+**/.env.local
+**/.env.development
+**/.env.production
+**/.env.test
+!**/.env.sample
+!**/.env.example
