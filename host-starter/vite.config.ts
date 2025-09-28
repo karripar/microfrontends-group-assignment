@@ -12,15 +12,15 @@ export default defineConfig({
       name: 'host',
       remotes: {
         mediastore:
-          "https://users.metropolia.fi/~karripar/microfrontend/mediastore/assets/remoteEntry.js",
+          "http://10.120.33.54:3001/assets/remoteEntry.js",
         front_and_sidebar:
-          "https://users.metropolia.fi/~karripar/microfrontend/frontsidebar/assets/remoteEntry.js",
+          "http://10.120.33.54:3002/assets/remoteEntry.js",
         video_player:
-          "https://users.metropolia.fi/~karripar/microfrontend/videoplayer/assets/remoteEntry.js",
-        upload:
-          "https://users.metropolia.fi/~karripar/microfrontend/upload/assets/remoteEntry.js",
+          "http://10.120.33.54:3004/assets/remoteEntry.js",
         profile:
-          "https://users.metropolia.fi/~karripar/microfrontend/profile/assets/remoteEntry.js",
+          "http://10.120.33.54:3005/assets/remoteEntry.js",
+        upload:
+          "http://10.120.33.54:3006/assets/remoteEntry.js",
       },
 
       shared: ["react", "react-dom", "react-router-dom"],
