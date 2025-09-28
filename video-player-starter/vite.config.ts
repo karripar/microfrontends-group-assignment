@@ -17,6 +17,7 @@ export default defineConfig({
     }),
   ],
   server: {
+    host: true,
     strictPort: true,
     cors: true,
     port: 3004, // Set the desired port here
