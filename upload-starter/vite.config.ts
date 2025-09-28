@@ -10,7 +10,7 @@ export default defineConfig({
       name: 'upload',
       filename: 'remoteEntry.js',
       remotes: {
-        mediastore: 'http://localhost:3001/assets/remoteEntry.js',
+        mediastore: 'https://users.metropolia.fi/~karripar/microfrontend/mediastore/assets/remoteEntry.js',
       },
       exposes: {
         './Upload': './src/views/upload/Upload.tsx',
