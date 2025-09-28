@@ -94,6 +94,7 @@ const MediaProvider = ({ children }: { children: React.ReactNode }) => {
     const getUserMediaItems = async (id: number) => {
       try {
         const media = await getMediaByUser(id);
+        console.log("getUserMediaItems", media);
         if (!media) {
           return;
         }

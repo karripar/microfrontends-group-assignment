@@ -84,6 +84,7 @@ type AuthContextType = {
   handleLogin: (credentials: Credentials) => void;
   handleLogout: () => void;
   handleAutoLogin: () => void;
+  handleRegister: (userData: Record<string, string>) => void;
 };
 
 type MediaContextType = {

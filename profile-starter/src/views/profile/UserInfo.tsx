@@ -1,13 +1,13 @@
-import { LuLogOut, LuMail } from 'react-icons/lu';
-import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
-import { Button } from '@/components/ui/button';
-import { useEffect, useState } from 'react';
-import { MediaItem } from '@sharedTypes/DBTypes';
-import ProfileThumbnail from './ProfileThumbnail';
+import { LuLogOut, LuMail } from "react-icons/lu";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import { useEffect, useState } from "react";
+import { MediaItem } from "@sharedTypes/DBTypes";
+import ProfileThumbnail from "./ProfileThumbnail";
 // : import useMedia from mediastore mfe
 // : import useUserContext from mediastore mfe
-import { useMedia } from 'mediastore/apiHooks';
-import { useUserContext } from 'mediastore/contextHooks';
+import { useMedia } from "mediastore/apiHooks";
+import { useUserContext } from "mediastore/contextHooks";
 
 const UserInfo = () => {
   const [mediaItems, setMediaItems] = useState<MediaItem[]>([]);
@@ -32,11 +32,14 @@ const UserInfo = () => {
       {user && (
         <>
           <div className="bg-muted rounded-t-lg p-6 flex items-center gap-6">
-            <Avatar className="h-16 w-16">
-              <AvatarImage src="/placeholder-user.jpg" alt="@shadcn" />
-              <AvatarFallback>JD</AvatarFallback>
-            </Avatar>
-            <div className="grid gap-1 flex-1">
+            <div className="relative">
+              <Avatar className="h-20 w-20 border-4 border-white shadow-lg ring-2 ring-gray-200">
+                <AvatarFallback className="font-bold">
+                  {user.username?.slice(0, 2).toUpperCase()}
+                </AvatarFallback>
+              </Avatar>
+            </div>
+            <div className="grid gap-1 flex-1 ml-8">
               <div className="flex items-center justify-between">
                 <h1 className="text-2xl font-bold">{user.username}</h1>
                 <Button onClick={handleLogout} className="rounded-full">
