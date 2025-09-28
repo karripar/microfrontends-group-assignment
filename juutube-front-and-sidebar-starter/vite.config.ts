@@ -15,10 +15,10 @@ export default defineConfig({
         './ThumbCarousel': './src/components/thumb-carousel/ThumbCarousel.tsx',
       },
       shared: ['react', 'react-dom', 'react-router-dom'],
-    // federation config, name: front_and_sidebar,
-    // expose Front, Sidebar, and ThumbCarousel,
-    // shared: react, react-dom, react-router-dom
-    })
+      // federation config, name: front_and_sidebar,
+      // expose Front, Sidebar, and ThumbCarousel,
+      // shared: react, react-dom, react-router-dom
+    }),
   ],
   server: {
     port: 3002, // Set the desired port here

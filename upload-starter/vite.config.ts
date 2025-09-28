@@ -1,20 +1,20 @@
 import path from 'path';
-import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
+import { defineConfig } from 'vite';
 import federation from '@originjs/vite-plugin-federation';
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     react(),
     federation({
-      name: 'mediastore',
+      name: 'upload',
       filename: 'remoteEntry.js',
+      remotes: {
+        mediastore: 'http://localhost:3001/assets/remoteEntry.js',
+      },
       exposes: {
-        './contextHooks': './src/hooks/contextHooks.ts',
-        './apiHooks': './src/hooks/apiHooks.ts',
-        './MediaContext': './src/contexts/MediaContext.tsx',
-        './UserContext': './src/contexts/UserContext.tsx',
+        './Upload': './src/views/upload/Upload.tsx',
+        './MediaForm': './src/views/upload/MediaForm.tsx',
       },
       shared: {
         react: { requiredVersion: '^18.3.1' },
@@ -24,7 +24,7 @@ export default defineConfig({
     }),
   ],
   server: {
-    port: 3001, // Set the desired port here
+    port: 3006,
     strictPort: true,
     cors: true,
     headers: {
@@ -34,7 +34,7 @@ export default defineConfig({
     },
   },
   preview: {
-    port: 3001, // Set the desired port here
+    port: 3006,
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET,OPTIONS',
@@ -44,6 +44,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
+      '@sharedTypes': path.resolve(__dirname, '../palvelinohjelmointi-types'),
     },
   },
   build: {

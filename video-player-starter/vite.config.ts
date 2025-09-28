@@ -13,7 +13,7 @@ export default defineConfig({
         "./VideoPlayer": "./src/components/player/VideoPlayer.tsx",
         "./VideoButtons": "./src/components/player/VideoButtons.tsx",
       },
-      shared: ["react", "react-dom", "react-router-dom"],
+      shared: ['react', 'react-dom', 'react-router-dom'],
     }),
   ],
   server: {
@@ -21,17 +21,17 @@ export default defineConfig({
     cors: true,
     port: 3004, // Set the desired port here
     headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET,OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type, Authorization",
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET,OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
     },
   },
   preview: {
     port: 3004, // Set the desired port here
     headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET,OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type, Authorization",
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET,OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
     },
   },
   resolve: {
