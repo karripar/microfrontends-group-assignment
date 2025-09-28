@@ -5,18 +5,24 @@ import federation from "@originjs/vite-plugin-federation";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: './',
+  base: "./",
   plugins: [
     react(),
     federation({
       name: "host",
       remotes: {
-        mediastore: 'http://localhost:3001/assets/remoteEntry.js',
-        front_and_sidebar: 'http://localhost:3002/assets/remoteEntry.js',
-        video_player: 'http://localhost:3004/assets/remoteEntry.js',
-        profile: 'http://localhost:3005/assets/remoteEntry.js',
+        mediastore:
+          "https://users.metropolia.fi/~karripar/microfrontend/mediastore/assets/remoteEntry.js",
+        front_and_sidebar:
+          "https://users.metropolia.fi/~karripar/microfrontend/frontsidebar/assets/remoteEntry.js",
+        video_player:
+          "https://users.metropolia.fi/~karripar/microfrontend/videoplayer/assets/remoteEntry.js",
+        upload:
+          "https://users.metropolia.fi/~karripar/microfrontend/upload/assets/remoteEntry.js",
+        profile:
+          "https://users.metropolia.fi/~karripar/microfrontend/profile/assets/remoteEntry.js",
       },
-      
+
       shared: ["react", "react-dom", "react-router-dom"],
     }),
 

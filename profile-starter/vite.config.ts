@@ -10,8 +10,8 @@ export default defineConfig({
       name: "profile",
       filename: "remoteEntry.js",
       remotes: {
-        mediastore: 'http://localhost:3001/assets/remoteEntry.js',
-        front_and_sidebar: 'http://localhost:3002/assets/remoteEntry.js',
+        mediastore: 'https://users.metropolia.fi/~karripar/microfrontend/mediastore/assets/remoteEntry.js',
+        front_and_sidebar: 'https://users.metropolia.fi/~karripar/microfrontend/frontsidebar/assets/remoteEntry.js',
       },
       exposes: {
         "./DeleteMedia": "./src/views/profile/DeleteMedia.tsx",
@@ -32,9 +32,21 @@ export default defineConfig({
   ],
   server: {
     port: 3005,
+    strictPort: true,
+    cors: true,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET,OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    },
   },
   preview: {
     port: 3005,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET,OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    },
   },
   resolve: {
     alias: {
