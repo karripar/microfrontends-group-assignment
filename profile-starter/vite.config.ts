@@ -10,8 +10,8 @@ export default defineConfig({
       name: 'profile',
       filename: 'remoteEntry.js',
       remotes: {
-        mediastore: 'http://10.120.33.54:3001/assets/remoteEntry.js',
-        front_and_sidebar: 'http://10.120.33.54:3002/assets/remoteEntry.js',
+        mediastore: 'http://10.120.33.54/store/assets/remoteEntry.js',
+        front_and_sidebar: 'http://10.120.33.54/bars/assets/remoteEntry.js',
       },
       exposes: {
         './DeleteMedia': './src/views/profile/DeleteMedia.tsx',
