@@ -10,12 +10,18 @@ export default defineConfig({
     federation({
       name: 'mediastore',
       filename: 'remoteEntry.js',
+      remotes: {
+        topbar: 'http://localhost:3003/assets/remoteEntry.js',
+        host: 'http://localhost:3000/assets/remoteEntry.js',
+      },
+      
       exposes: {
         './contextHooks': './src/hooks/contextHooks.ts',
         './apiHooks': './src/hooks/apiHooks.ts',
         './MediaContext': './src/contexts/MediaContext.tsx',
         './UserContext': './src/contexts/UserContext.tsx',
       },
+
       shared: {
         react: { requiredVersion: '^18.3.1' },
         'react-dom': { requiredVersion: '^18.3.1' },

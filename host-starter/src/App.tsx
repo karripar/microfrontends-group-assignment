@@ -8,6 +8,10 @@ import Home from './views/home/Home';
 import { UserProvider } from 'mediastore/UserContext';
 import { MediaProvider } from 'mediastore/MediaContext';
 import Profile from 'profile/Profile';
+import React from 'react';
+
+const TopBar = React.lazy(() => import('topbar/TopBar'));
+
 
 function App() {
   return (
@@ -19,6 +23,11 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/single/:id" element={<Single />} />
               <Route path="/profile" element={<Profile />} />
+              <Route path="/topbar" element={
+                  <React.Suspense fallback={null}>
+                    <TopBar />
+                  </React.Suspense>
+                } />
               <Route
                 path="/upload"
                 element={
